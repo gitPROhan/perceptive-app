@@ -121,7 +121,8 @@ def get_prediction(name, list_of_tuples_for_detections_from_class_images):
                 fig.savefig(bas64StringFile, format="png")
                 bas64StringFile.seek(0)
 
-                base64String.append(base64.b64encode(bas64StringFile.read()).encode("ascii"))
+                base64String.append(base64.b64encode(bas64StringFile.read()))
+
 
                 plt.close(fig)
                 multi_list.append(list)
