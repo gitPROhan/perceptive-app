@@ -56,24 +56,22 @@ export default class NewSummary extends Component {
     if (this.code == 0 || this.code == 2) {
 
 
-// code for updating the prevSummary (obj) from the Details of CurrentSummmary
+      // code for updating the prevSummary (obj) from the Details of CurrentSummmary
       for (var i = 0; i < currentSummary.length; i++) {
         var found = 0;
         for (var j = 0; j < obj.items.length; j++) {
 
-          if (obj.items[j].name == currentSummary[i].name) 
-          {
+          if (obj.items[j].name == currentSummary[i].name) {
             found = 1;
-            if (this.code == 0)      obj.items[j].resQuantity = obj.items[j].resQuantity + currentSummary[i].resQuantity;//adding since it is new Image
+            if (this.code == 0) obj.items[j].resQuantity = obj.items[j].resQuantity + currentSummary[i].resQuantity;//adding since it is new Image
 
             else if (this.code == 2) obj.items[j].resQuantity = currentSummary[i].resQuantity; // updating since it is a new scan.
 
           }
           //assiging colours
-          if (obj.items[j].reqQuantity == 0)                             obj.items[j].colour = "grey";
-          else if (obj.items[j].resQuantity == obj.items[j].reqQuantity) obj.items[j].colour = "green";
-          else if (obj.items[j].resQuantity == 0)                        obj.items[j].colour = "red";
-          else                                                           obj.items[j].colour = "yellow";
+          if (j % 2 == 0) obj.items[j].colour = "#808080";
+          else obj.items[j].colour = "#FFFFFF";
+
 
 
         }
@@ -89,24 +87,18 @@ export default class NewSummary extends Component {
         }
       }
     }
-// for the red coloured option
+    // for the red coloured option
     else if (this.code == 1) {
       for (var i = 0; i < currentSummary.length; i++) {
         for (var j = 0; j < obj.items.length; j++) {
           //only changing for the red colured items.
           if (obj.items[j].name == currentSummary[i].name && obj.items[j].colour == "red") {
             obj.items[j].resQuantity = currentSummary[i].resQuantity;
-            if (obj.items[j].reqQuantity == 0) {
-              obj.items[j].colour = "grey";
-            }
-            else if (obj.items[j].resQuantity == obj.items[j].reqQuantity) {
-              obj.items[j].colour = "green";
-            }
-            else if (obj.items[j].resQuantity == 0) {
-              obj.items[j].colour = "red";
+            if (J % 2 == 0) {
+              obj.items[j].colour = "#808080";
             }
             else {
-              obj.items[j].colour = "yellow";
+              obj.items[j].colour = "#FFFFFF";
             }
           }
         }
@@ -116,8 +108,8 @@ export default class NewSummary extends Component {
 
     //Saving the data in state after assigning colours and merging order details.
     this.state = {
-      tableHead: ["ITEM", "DETECTED", "REQUIRED"],
-      widthArr: [windowWidth / 2.8, windowWidth / 4.9, windowWidth / 4.9],
+      tableHead: ["Item Name", "Scanned"],
+      widthArr: [windowWidth / 2, windowWidth / 2],
       test: 10,
       object: obj,
       currentSummary: this.props.route.params.currentSummary,
@@ -127,7 +119,7 @@ export default class NewSummary extends Component {
 
   }
 
-//back handler for handling the goback option before saving the summary.
+  //back handler for handling the goback option before saving the summary.
   backAction = () => {
     Alert.alert("Hold on!", "Summary Won't be Saved?", [
       {
@@ -139,36 +131,29 @@ export default class NewSummary extends Component {
     ]);
     return true;
   };
-// Adding the listener
+  // Adding the listener
   async componentDidMount() {
     await this.getEditable()
     BackHandler.addEventListener("hardwareBackPress", this.backAction);
   }
-// removing the listener
+  // removing the listener
   componentWillUnmount() {
     return BackHandler.removeEventListener("hardwareBackPress", this.backAction);
   }
 
 
 
-// function for updating the colours and quanities when the settings are enabled.
+  // function for updating the colours and quanities when the settings are enabled.
   updateState(i, char) {
     var obj = this.state.object;
     if (char == "+") { obj.items[i].resQuantity++; }
     else if (obj.items[i].resQuantity >= 1) { obj.items[i].resQuantity--; }
 
-    if (obj.items[i].reqQuantity == 0) {
-      obj.items[i].colour = "grey";
+    if (i % 2 == 0) {
+      obj.items[i].colour = "#808080";
     }
-    else if (obj.items[i].resQuantity == obj.items[i].reqQuantity) {
-      obj.items[i].colour = "green";
-
-    }
-    else if (obj.items[i].resQuantity == 0) {
-      obj.items[i].colour = "red";
-
-    } else {
-      obj.items[i].colour = "yellow";
+    else {
+      obj.items[i].colour = "#FFFFFF";
 
     }
 
@@ -197,7 +182,7 @@ export default class NewSummary extends Component {
     this.props.navigation.dispatch(pushAction);
 
   };
-// function for cancelling the scan and navigating to home.
+  // function for cancelling the scan and navigating to home.
   callDelete = async (title) => { this.props.navigation.reset({ index: 0, routes: [{ name: "Home" }] }); };
 
   // function for saving the order to databse and naviagte to home.
@@ -228,7 +213,7 @@ export default class NewSummary extends Component {
     this.props.navigation.navigate("ImageViewer", { photos, });
   };
 
-// the editable option for displaying the plus minus icons accordingly
+  // the editable option for displaying the plus minus icons accordingly
   getEditable = async () => {
     try {
       let value = await AsyncStorage.getItem(keyForEditable);
@@ -236,7 +221,7 @@ export default class NewSummary extends Component {
         this.setState({ editable: true });
       }
       else {
-        this.setState({ editable: false });
+        this.setState({ editable: true });
       }
 
     } catch (e) {
@@ -251,47 +236,33 @@ export default class NewSummary extends Component {
     var data = [];
     var show = [];
 
-// show array for colours. and data row for tables. refer react-native-table for documentation.
+    // show array for colours. and data row for tables. refer react-native-table for documentation.
     for (let i = 0; i < this.state.object.items.length; i++) {
-      if (this.state.object.items[i].colour == "green") show.push(colours.green);
-      else if (this.state.object.items[i].colour == "red") show.push(colours.red);
-      else if (this.state.object.items[i].colour == "grey") show.push(colours.grey);
-      else if (this.state.object.items[i].colour == "yellow") show.push(colours.yellow);
+      if (i % 2 == 0) show.push(colours.green);
+      else show.push(colours.red);
       const dataRow = [];
       dataRow.push(this.state.object.items[i].name);
-
-
-
-      if (this.state.editable == false)
-        dataRow.push(this.state.object.items[i].resQuantity);
-
-      else {
-        dataRow.push
-          (
-            <View style={styles.plusminuscontainer}>
+      dataRow.push
+        (
+          <View style={styles.plusminuscontainer}>
+            <View style={styles.plusminusbuttons} >
+              <TouchableOpacity underlayColor="white" onPress={() => this.updateState(i, "-")} >
+                <AntDesign name="minus" size={10} color="black" style={styles.minusbuttonText} />
+              </TouchableOpacity>
               <Text style={styles.plusminustext}>{this.state.object.items[i].resQuantity}</Text>
-              <View style={styles.plusminusbuttons} >
-                <TouchableOpacity underlayColor="white" onPress={() => this.updateState(i, "+")} >
-                  <AntDesign name="plus" size={10} color="black" style={[styles.plusminusbuttonText, { paddingBottom: 10 }]} />
-                </TouchableOpacity>
-
-                <TouchableOpacity underlayColor="white" onPress={() => this.updateState(i, "-")} >
-                  <AntDesign name="minus" size={10} color="black" style={styles.plusminusbuttonText} />
-                </TouchableOpacity>
-
-              </View>
+              <TouchableOpacity underlayColor="white" onPress={() => this.updateState(i, "+")} >
+                <AntDesign name="plus" size={10} color="black" style={styles.plusbuttonText} />
+              </TouchableOpacity>
             </View>
-          );
-      }
-
-      dataRow.push(this.state.object.items[i].reqQuantity);
+          </View>
+        );
       data.push(dataRow);
     }
 
     return (
       <View style={styles.container}>
         <View style={styles.tableBody}>
-          <Text style={styles.text}>DETECTIONS</Text>
+          {/* <Text style={styles.text}>DETECTIONS</Text> */}
           <Table>
             <Row
               data={this.state.tableHead}
@@ -317,7 +288,7 @@ export default class NewSummary extends Component {
               ))}
             </Table>
 
-            <View style={styles.middleicon}>
+            {/* <View style={styles.middleicon}>
 
               <TouchableHighlight onPress={() => { this.sendData(this.state.object, 0); }} underlayColor="white">
 
@@ -327,22 +298,21 @@ export default class NewSummary extends Component {
 
               <Text style={{ marginLeft: -15 }}>ADD IMAGE</Text>
 
-            </View>
+            </View> */}
 
           </ScrollView>
         </View>
 
-        <View style={styles.bottomNav}>
-          <View style={styles.bottomicon}>
+        {/* <View style={styles.bottomicon}>
             <TouchableHighlight
               onPress={() => { this.sendPhotos(this.state.object.images); }}
               underlayColor="white"
             >
               <Icon name="images" type="ioniicons" color="black" size={30} />
             </TouchableHighlight>
-          </View>
+          </View> */}
 
-          <View style={styles.bottomicon}>
+        {/* <View style={styles.bottomicon}>
             <TouchableHighlight
               onPress={() => this.callDelete(this.state.object.title)}
               underlayColor="white"
@@ -350,9 +320,9 @@ export default class NewSummary extends Component {
 
               <MaterialIcons name="cancel" size={35} color="black" />
             </TouchableHighlight>
-          </View>
+          </View> */}
 
-          <View style={styles.bottomicon}>
+        {/* <View style={styles.bottomicon}>
             <TouchableHighlight
               onPress={() => {
                 this.callSave(this.state.object);
@@ -362,8 +332,7 @@ export default class NewSummary extends Component {
 
               <Ionicons name="md-checkmark-circle" size={35} color="black" />
             </TouchableHighlight>
-          </View>
-        </View>
+          </View> */}
       </View>
     );
   }
@@ -372,11 +341,11 @@ export default class NewSummary extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#D7E5FF",
   },
   head: {
     height: windowHeight / 16.44,
-    backgroundColor: colours.blue,
+    backgroundColor: "#FFFFFF",
   },
   text: {
     textAlign: "center",
@@ -424,27 +393,37 @@ const styles = StyleSheet.create({
   },
   plusminuscontainer:
   {
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   plusminustext: {
     textAlign: "center",
     paddingTop: 12,
-    paddingLeft: 22,
+    paddingLeft: 20,
+    paddingRight: 22,
+    width: 80,
     fontWeight: "bold",
     fontSize: 20,
   },
   plusminusbuttons: {
     paddingLeft: 20,
-    flexDirection: "column",
-    alignItems: "center",
-
-
+    flexDirection: "row",
+    alignItems: "left",
   },
-  plusminusbuttonText: {
-
+  plusbuttonText: {
+    paddingTop: 17,
+    paddingBottom: 17,
+    paddingRight: 10,
     fontSize: 20,
-    paddingLeft: -1,
-
+    paddingLeft: 10,
+    backgroundColor: "#1A49F2",
+  },
+  minusbuttonText: {
+    paddingTop: 17,
+    paddingBottom: 17,
+    paddingRight: 10,
+    fontSize: 20,
+    paddingLeft: 10,
+    backgroundColor: "#95A3D4",
   }
 
 });

@@ -3,8 +3,8 @@
 //Refer like A json object, for example green can be called with colours.green
 
 const colours = {
-    "green": "#6FCF97",
-    "red": "#EB5757",
+    "green": "#CCCCCC",
+    "red": "#FFFFFF",
     "yellow": "#F2C94C",
     "grey": "#C4C4C4",
     "blue": "#5AAED3"
