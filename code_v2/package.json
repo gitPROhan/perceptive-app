@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@expo/cli": "^0.17.3",
+    "expo-image": "^1.10.6",
+    "uuid": "^9.0.1"
+  }
+}

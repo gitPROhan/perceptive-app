@@ -1,0 +1,22 @@
+{
+  "title": "pink-orange",
+  "userId": "0",
+  "lastModified": "04/05/2021",
+  "created": "04/05/2021",
+  "isScanned": false,
+  "images": [],
+  "items": [
+    {
+      "name": "pink",
+      "reqQuantity": { "$numberInt": "2" },
+      "resQuantity": { "$numberInt": "0" },
+      "colour": "red"
+    },
+    {
+      "name": "orange",
+      "reqQuantity": { "$numberInt": "1" },
+      "resQuantity": { "$numberInt": "0" },
+      "colour": "red"
+    }
+  ]
+}

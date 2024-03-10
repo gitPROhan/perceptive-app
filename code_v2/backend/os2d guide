@@ -1,0 +1,34 @@
+OS2D MODEL WORK FLOW WITH CODE:
+
+FIRST STEP :
+checks if GPU is available or not if no then use CPU
+
+Secong Step:
+use the pretrained model i.e download it and then load it
+then intialize the model by build_os2d_from_config(cfg) where cfg is parameters that are already set.
+
+Third Step:
+Feed the input image and also the class images
+
+Fourth Step:
+Use torchvision to convert images to torch.Tensor and to apply normalization.
+
+Fifth Step:
+use  get_image_size_after_resize_preserving_aspect_ratio(h, w, target_size) function from utils to convert input image to fixed size and we get h,w outputs.
+then resize image to new h,w
+then use Fourth Step for newer image.
+
+Sixth Step:
+repeat Fifth Step for all class images provided.
+
+Seventh Step:
+extract features from input image using build_feature function using resnet as backbone.
+extract features from all class images using LabelFeatureExtracter function and append it in a list
+call os2d_head_creator function and pass in the class feature maps into this function.
+it returns the class heads.
+later pass this class heads and input feature map to the net to get the all outputs
+later pass this to the decode_box_pyramid to get the detections on input image with nms performed.
+
+eight step:
+just display the outputs.
+
