@@ -28,7 +28,8 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   BackHandler,
-  Alert
+  Alert,
+  Image,
 } from "react-native";
 import axios from "axios";
 import { StackActions } from '@react-navigation/native';
@@ -261,8 +262,12 @@ export default class NewSummary extends Component {
 
     return (
       <View style={styles.container}>
+        <Image
+          style={styles.transparentLogo1Icon}
+          contentFit="cover"
+          source={require("./assets/logo.png")}
+        />
         <View style={styles.tableBody}>
-          {/* <Text style={styles.text}>DETECTIONS</Text> */}
           <Table>
             <Row
               data={this.state.tableHead}
@@ -424,6 +429,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingLeft: 10,
     backgroundColor: "#95A3D4",
-  }
-
+  },
+  transparentLogo1Icon: {
+    width: 50,
+    height: 50,
+    top: 40,
+    left: 20,
+  },
 });
