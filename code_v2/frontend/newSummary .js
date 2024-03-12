@@ -25,7 +25,7 @@ import {
   ScrollView,
   Text,
   Dimensions,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
   TouchableOpacity,
   BackHandler,
   Alert,
@@ -39,6 +39,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 import { header, host, port, keyForEditable } from "./Constants";
 import colours from "./colours";
+import { useNavigation } from '@react-navigation/native';
 
 
 //screen dimensions for making the css universal; i.e, independent of phone's dimension
@@ -230,8 +231,6 @@ export default class NewSummary extends Component {
     }
 
   }
-
-
   render() {
 
     var data = [];
@@ -307,7 +306,13 @@ export default class NewSummary extends Component {
 
           </ScrollView>
         </View>
-
+        <TouchableWithoutFeedback onPress={this.backAction}>
+          <Image
+            style={styles.backimage}
+            contentFit="cover"
+            source={require("./assets/back.png")}
+          />
+        </TouchableWithoutFeedback>
         {/* <View style={styles.bottomicon}>
             <TouchableHighlight
               onPress={() => { this.sendPhotos(this.state.object.images); }}
@@ -434,6 +439,11 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     top: 40,
+    left: 20,
+  },
+  backimage: {
+    width: 50,
+    height: 50,
     left: 20,
   },
 });
