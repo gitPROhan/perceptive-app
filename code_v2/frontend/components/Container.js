@@ -51,14 +51,14 @@ const Container = () => {
 const styles = StyleSheet.create({
 
   outlinedelevatedlargeiconOChild: {
-    width: 24,
-    height: 24,
+    width: 40,
+    height: 40,
   },
   outlinedelevatedlargeiconO: {
     position: "absolute",
     top: 0,
     left: 4151,
-    borderRadius: Border.br_31xl,
+    borderRadius: 15,
     backgroundColor: Color.colorLavender,
     shadowColor: "rgba(101, 92, 128, 0.4)",
     shadowOffset: {
