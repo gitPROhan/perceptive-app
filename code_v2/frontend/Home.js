@@ -463,7 +463,7 @@ const HomePage = () => {
     // summary = response[0]
     // response = response.data;
     let orders = [];
-    let summary = { "_id": "65e896a5edfb9faa551aa1c4", "copyIndex": 0, "created": "5-3-2024", "images": [], "isScanned": false, "items": [{ "colour": "red", "name": "pink-waffy", "reqQuantity": "1", "resQuantity": 0 }], "title": "title1", "userId": "0" };
+    let summary = { "_id": "65e896a5edfb9faa551aa1c4", "copyIndex": 0, "created": "5-3-2024", "images": [], "isScanned": false, "items": [], "title": "title1", "userId": "0" };
     let code = 0;
     const pushAction = StackActions.push("Detections", { orders, summary, code, });
     navigation.dispatch(pushAction);
