@@ -264,7 +264,7 @@ export default class NewSummary extends Component {
         <Image
           style={styles.transparentLogo1Icon}
           contentFit="cover"
-          source={require("./assets/logo.png")}
+          source={require("./assets/logo1.png")}
         />
         <View style={styles.tableBody}>
           <Table>
@@ -283,8 +283,11 @@ export default class NewSummary extends Component {
                   key={index}
                   data={f}
                   widthArr={this.state.widthArr}
-                  style={[styles.row, { backgroundColor: show[index] }]}
-                  textStyle={styles.text}
+                  style={[
+                    styles.row,
+                    { backgroundColor: show[index] },
+                    index === data.length - 1 && styles.lastRow // Apply lastRow style to the last row
+                  ]} textStyle={styles.text}
                   onPress={() => {
                     show[index] == colours.red ? this.sendData(this.state.object, "1") : null;
                   }}
@@ -355,29 +358,40 @@ const styles = StyleSheet.create({
   },
   head: {
     height: windowHeight / 16.44,
+    width: windowWidth / 1.085,
     backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   text: {
     textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 20,
+    fontWeight: "none",
+    fontSize: 17,
   },
   headerText: {
-    textAlign: "center",
+    textAlign: "left",
     fontWeight: "bold",
-    fontSize: 13,
+    fontSize: 20,
   },
   dataWrapper: {
     marginTop: -1,
   },
   row: {
     height: windowHeight / 13.7,
-    marginTop: windowHeight / 274,
+    marginTop: 0,
+  },
+  lastRow: {
+    borderBottomLeftRadius: 20, // Adjust the value to change the roundness
+    borderBottomRightRadius: 20, // Adjust the value to change the roundness
   },
   tableBody: {
     alignItems: "center",
     paddingTop: windowHeight / 11.7428,
     marginBottom: 150,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   bottomNav: {
     position: "absolute",
@@ -411,11 +425,10 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 22,
     width: 80,
-    fontWeight: "bold",
-    fontSize: 20,
+    fontWeight: "none",
+    fontSize: 17,
   },
   plusminusbuttons: {
-    paddingLeft: 20,
     flexDirection: "row",
     alignItems: "left",
   },
