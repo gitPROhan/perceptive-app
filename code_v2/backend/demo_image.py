@@ -102,7 +102,7 @@ def get_prediction(path, list_of_tuple_for_detections_from_class_images):
     fig.savefig(bas64StringFile, format="png")
     bas64StringFile.seek(0)
 
-    base64String.append(base64.b64encode(bas64StringFile.read()))
+    base64String.append(base64.b64encode(bas64StringFile.read()).decode('ascii'))
 
     plt.close(fig)
     print("\nItems detected in the Image : ")

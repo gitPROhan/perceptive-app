@@ -94,13 +94,13 @@ def imagedetection():
         # for i in base64OfOutput:
         #     snans.append(str(i))
         # Assuming base64OfOutput is a list of bytes objects
-        combined_bytes = b''.join(base64OfOutput)
+        # combined_bytes = b''.join(base64OfOutput)
 
         # Encode the combined bytes object to base64 string
-        base64_string = base64.b64encode(combined_bytes).decode('utf-8')
+        # base64_string = base64.b64encode(combined_bytes).decode('utf-8')
 
         # Return JSON response with the base64 string
-        return jsonify({"summary": analysePrediction(listFromImage), "base64Out": base64_string})
+        return jsonify({"summary": analysePrediction(listFromImage), "base64Out": base64OfOutput})
 
     else:
         return {'error': 'error'}
@@ -224,15 +224,15 @@ def videodetection():
         listFromVideo, base64OfOutput = demo_video.get_prediction(name, orders)
         
         # Assuming base64OfOutput is a list of bytes objects
-        combined_bytes = b''.join(base64OfOutput)
+        # combined_bytes = b''.join(base64OfOutput)
 
         # Encode the combined bytes object to base64 string
-        base64_string = base64.b64encode(combined_bytes).decode('utf-8')
+        # base64_string = base64.b64encode(combined_bytes).decode('utf-8')
         # snans = []
         # for i in base64OfOutput:
         #     snans.append(str(i))
 
-        return jsonify({"summary": analysePredictionVideo(listFromVideo), "base64Out": base64_string})
+        return jsonify({"summary": analysePredictionVideo(listFromVideo), "base64Out": base64OfOutput})
 
     else:
         return jsonify({'error': 'error'})
