@@ -284,10 +284,15 @@ export default class NewSummary extends Component {
             onPress={() => { this.sendPhotos(this.state.object.images); }}
             underlayColor="white"
           >
-            {this.state.imgflag && 
-            (<Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 234, height: 234,borderRadius:20, }} />)}
-
-            {!this.state.imgflag && (<Icon name="images" type="ioniicons" color="black" size={30} />)}
+            {this.state.imgflag ? (
+              <Image
+                key={-1}
+                source={{ uri: this.state.imagein }}
+                style={{ width: 234, height: 234, borderRadius: 20 }}
+              />
+            ) : (
+              <Icon name="images" type="ioniicons" color="black" size={30} />
+            )}
           </TouchableHighlight>
         </View>
         <View style={styles.tableBody}>
