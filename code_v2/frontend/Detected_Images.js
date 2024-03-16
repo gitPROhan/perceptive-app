@@ -26,7 +26,7 @@ export default function App({ route, navigation }) {
   for (let index = 0; index < uris.length; index++) {
     images.push(
       <View key={index + 1}>
-        <ImageView ind={index + 1} key={index + 1} uri={uris[index]} />
+        <ImageView style={{width:25, height:25}} ind={index + 1} key={index + 1} uri={uris[index]} />
       </View>
     );
   }
@@ -45,9 +45,11 @@ export default function App({ route, navigation }) {
   }, []);
 
   return (
-    <ScrollView style={{ alignSelf: "center" }}>
+    <ScrollView style={{ alignSelf: "center",backgroundColor:"#D7E5FF" }}>
       {/* <Text style={{ textAlign: "center", fontSize: 50 }}>Order-Title</Text> */}
+      <View style={{backgroundColor:"#D7E5FF"}}>
       {images}
+      </View>
     </ScrollView>
   );
 }
