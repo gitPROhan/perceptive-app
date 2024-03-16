@@ -33,6 +33,7 @@ import {
   Image,
 } from "react-native";
 import axios from "axios";
+import { Video } from 'expo-av';
 import { StackActions } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Table, Row } from "react-native-table-component";
@@ -40,6 +41,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 import { header, host, port, keyForEditable } from "./Constants";
 import colours from "./colours";
+// import Constants from 'expo-constants';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -60,7 +62,14 @@ export default class NewSummary extends Component {
 
     // var base64org = orgimg.base64
     // console.log("printing")
-    var inputuri = "data:image/png;base64," + base64org;
+    var inputuri;
+    if (vidflag) {
+      inputuri = "data:image/png;base64," + base64org;
+    } else {
+      inputuri = "data:video/mp4;base64," + base64org;
+      // console.log(inputuri)
+      console.log("Yes")
+    }
     // console.log(base64org)
 
     //for a Add image and {new Scan or fresh Scan}
@@ -291,7 +300,15 @@ export default class NewSummary extends Component {
                 style={{ width: 234, height: 234, borderRadius: 20 }}
               />
             ) : (
-              <Icon name="images" type="ioniicons" color="black" size={30} />
+              // <Icon name="images" type="ioniicons" color="black" size={30} />
+              <Video
+                key={-1}
+                source={{ uri: this.state.imagein }}
+                style={{ width: 234, height: 234, borderRadius: 20 }}
+                resizeMode="contain"
+                shouldPlay
+                isLooping
+              />
             )}
           </TouchableHighlight>
         </View>

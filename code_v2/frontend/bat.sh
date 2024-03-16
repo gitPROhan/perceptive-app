@@ -97,6 +97,8 @@ npm install @expo/config@8.1.1 --legacy-peer-deps
 npm install @expo/metro-config@0.10.0 --legacy-peer-deps
 
 npm install --legacy-peer-deps
+npm install --save expo-av --legacy-peer-deps
+
 
 npx expo install --fix --  --legacy-peer-deps
 
