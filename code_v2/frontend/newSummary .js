@@ -51,9 +51,15 @@ export default class NewSummary extends Component {
   constructor(props) {
     super(props);
     // accessing the props from the route params
+    // var orgimg = this.props.sendData
     this.code = this.props.route.params.code;
     var obj = this.props.route.params.prevSummary;
     var currentSummary = this.props.route.params.currentSummary;
+    var base64org = this.props.route.params.inputimg;
+    // var base64org = orgimg.base64
+    // console.log("printing")
+    var inputuri = "data:image/png;base64," + base64org;
+    // console.log(base64org)
 
     //for a Add image and {new Scan or fresh Scan}
     if (this.code == 0 || this.code == 2) {
@@ -117,7 +123,8 @@ export default class NewSummary extends Component {
       object: obj,
       currentSummary: this.props.route.params.currentSummary,
       prevSummary: this.props.route.params.prevSummary,
-      editable: false
+      editable: false,
+      imagein: inputuri
     };
 
   }
@@ -259,7 +266,6 @@ export default class NewSummary extends Component {
         );
       data.push(dataRow);
     }
-
     return (
       <View style={styles.container}>
         <Image
@@ -267,12 +273,17 @@ export default class NewSummary extends Component {
           contentFit="cover"
           source={require("./assets/logo1.png")}
         />
+        {/* <View>
+          <Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 200, height: 200 }} />
+        </View> */}
         <View style={styles.bottomicon}>
           <TouchableHighlight
             onPress={() => { this.sendPhotos(this.state.object.images); }}
             underlayColor="white"
           >
-            <Icon name="images" type="ioniicons" color="black" size={30} />
+            <Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 234, height: 234,borderRadius:20, }} />
+
+            {/* <Icon name="images" type="ioniicons" color="black" size={30} /> */}
           </TouchableHighlight>
         </View>
         <View style={styles.tableBody}>
@@ -375,7 +386,8 @@ const styles = StyleSheet.create({
     paddingRight: 30,
   },
   text: {
-    textAlign: "center",
+    textAlign: "left",
+    marginLeft:30,
     fontWeight: "none",
     fontSize: 17,
   },
@@ -386,6 +398,7 @@ const styles = StyleSheet.create({
   },
   dataWrapper: {
     marginTop: -1,
+    maxHeight: 3*77,
   },
   row: {
     height: windowHeight / 13.7,
@@ -398,7 +411,7 @@ const styles = StyleSheet.create({
   tableBody: {
     alignItems: "center",
     paddingTop: windowHeight / 11.7428,
-    marginBottom: 150,
+    marginBottom: 80,
     paddingLeft: 15,
     paddingRight: 15,
   },
@@ -416,6 +429,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 20,
     alignItems: "center",
+    borderRadius:50,
+    marginBottom:-120
   },
   middleicon: {
     flexGrow: 1,
@@ -470,4 +485,7 @@ const styles = StyleSheet.create({
     left: 40,
     bottom: 50,
   },
+  imagestyle:{
+    borderTopLeftRadius:50,
+  }
 });
