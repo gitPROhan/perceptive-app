@@ -287,7 +287,7 @@ export default class NewSummary extends Component {
             {this.state.imgflag && 
             (<Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 234, height: 234,borderRadius:20, }} />)}
 
-            {this.state.imgflag && (<Icon name="images" type="ioniicons" color="black" size={30} />)}
+            {!this.state.imgflag && (<Icon name="images" type="ioniicons" color="black" size={30} />)}
           </TouchableHighlight>
         </View>
         <View style={styles.tableBody}>
