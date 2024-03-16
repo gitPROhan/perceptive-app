@@ -25,6 +25,7 @@ import {
   ScrollView,
   Text,
   Dimensions,
+  TouchableHighlight,
   TouchableWithoutFeedback,
   TouchableOpacity,
   BackHandler,
@@ -123,7 +124,7 @@ export default class NewSummary extends Component {
 
   //back handler for handling the goback option before saving the summary.
   backAction = () => {
-    Alert.alert("Hold on!", "Summary Won't be Saved?", [
+    Alert.alert("Hold on!", "Are you sure you want to go back?", [
       {
         text: "Cancel",
         onPress: () => null,
@@ -266,6 +267,14 @@ export default class NewSummary extends Component {
           contentFit="cover"
           source={require("./assets/logo1.png")}
         />
+        <View style={styles.bottomicon}>
+          <TouchableHighlight
+            onPress={() => { this.sendPhotos(this.state.object.images); }}
+            underlayColor="white"
+          >
+            <Icon name="images" type="ioniicons" color="black" size={30} />
+          </TouchableHighlight>
+        </View>
         <View style={styles.tableBody}>
           <Table>
             <Row
@@ -317,35 +326,35 @@ export default class NewSummary extends Component {
           />
         </TouchableWithoutFeedback>
         {/* <View style={styles.bottomicon}>
-            <TouchableHighlight
-              onPress={() => { this.sendPhotos(this.state.object.images); }}
-              underlayColor="white"
-            >
-              <Icon name="images" type="ioniicons" color="black" size={30} />
-            </TouchableHighlight>
-          </View> */}
+          <TouchableHighlight
+            onPress={() => { this.sendPhotos(this.state.object.images); }}
+            underlayColor="white"
+          >
+            <Icon name="images" type="ioniicons" color="black" size={30} />
+          </TouchableHighlight>
+        </View> */}
 
         {/* <View style={styles.bottomicon}>
-            <TouchableHighlight
-              onPress={() => this.callDelete(this.state.object.title)}
-              underlayColor="white"
-            >
+          <TouchableHighlight
+            onPress={() => this.callDelete(this.state.object.title)}
+            underlayColor="white"
+          >
 
-              <MaterialIcons name="cancel" size={35} color="black" />
-            </TouchableHighlight>
-          </View> */}
+            <MaterialIcons name="cancel" size={35} color="black" />
+          </TouchableHighlight>
+        </View>
 
-        {/* <View style={styles.bottomicon}>
-            <TouchableHighlight
-              onPress={() => {
-                this.callSave(this.state.object);
-              }}
-              underlayColor="white"
-            >
+        <View style={styles.bottomicon}>
+          <TouchableHighlight
+            onPress={() => {
+              this.callSave(this.state.object);
+            }}
+            underlayColor="white"
+          >
 
-              <Ionicons name="md-checkmark-circle" size={35} color="black" />
-            </TouchableHighlight>
-          </View> */}
+            <Ionicons name="md-checkmark-circle" size={35} color="black" />
+          </TouchableHighlight>
+        </View> */}
       </View>
     );
   }
@@ -417,7 +426,8 @@ const styles = StyleSheet.create({
   },
   plusminuscontainer:
   {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginRight: 20,
   },
   plusminustext: {
     textAlign: "center",
@@ -457,6 +467,8 @@ const styles = StyleSheet.create({
   backimage: {
     width: 50,
     height: 50,
-    left: 20,
+    left: 40,
+    bottom: 50,
   },
 });
+
