@@ -101,7 +101,7 @@ def imagedetection():
         # base64_string = base64.b64encode(combined_bytes).decode('ascii')
 
         # Return JSON response with the base64 string
-        return jsonify({"summary": analysePrediction(listFromImage), "base64Out": base64OfOutput})
+        return jsonify({"summary": analysePrediction(listFromImage), "base64Out": base64OfOutput, "base64Org": inputImageBase64})
 
     else:
         return {'error': 'error'}
