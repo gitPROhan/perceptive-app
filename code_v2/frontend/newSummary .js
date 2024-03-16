@@ -57,6 +57,7 @@ export default class NewSummary extends Component {
     var currentSummary = this.props.route.params.currentSummary;
     var base64org = this.props.route.params.inputimg;
     var vidflag = this.props.route.params.flag;
+
     // var base64org = orgimg.base64
     // console.log("printing")
     var inputuri = "data:image/png;base64," + base64org;
@@ -125,7 +126,8 @@ export default class NewSummary extends Component {
       currentSummary: this.props.route.params.currentSummary,
       prevSummary: this.props.route.params.prevSummary,
       editable: false,
-      imagein: inputuri
+      imagein: inputuri,
+      imgflag: vidflag
     };
 
   }
@@ -282,9 +284,10 @@ export default class NewSummary extends Component {
             onPress={() => { this.sendPhotos(this.state.object.images); }}
             underlayColor="white"
           >
-            <Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 234, height: 234,borderRadius:20, }} />
+            {this.state.imgflag && 
+            (<Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 234, height: 234,borderRadius:20, }} />)}
 
-            {/* <Icon name="images" type="ioniicons" color="black" size={30} /> */}
+            {this.state.imgflag && (<Icon name="images" type="ioniicons" color="black" size={30} />)}
           </TouchableHighlight>
         </View>
         <View style={styles.tableBody}>
