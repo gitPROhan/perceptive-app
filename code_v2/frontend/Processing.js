@@ -82,6 +82,7 @@ export default class Processing extends React.Component {
     var data = dataWithImages.summary;
     var base64OfDetectedImages = dataWithImages.base64Out;
     var inputImage = dataWithImages.base64Org;
+    var VidFlag = dataWithImages.isImage;
     // //DATA schema FROM IMAGEDETEC ROUTE FROM BACKEND
     // data  = [{
     //   "item"  :"item in order1" , "count" : "detected Couunt of order1"
@@ -116,7 +117,8 @@ export default class Processing extends React.Component {
       currentSummary: summarySchemaData,
       code: this.code,
       prevSummary: this.summary,
-      inputimg: inputImage
+      inputimg: inputImage,
+      flag: VidFlag
     });
     this.props.prevProps.navigation.dispatch(pushAction);
   };

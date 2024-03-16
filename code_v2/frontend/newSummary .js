@@ -56,6 +56,7 @@ export default class NewSummary extends Component {
     var obj = this.props.route.params.prevSummary;
     var currentSummary = this.props.route.params.currentSummary;
     var base64org = this.props.route.params.inputimg;
+    var vidflag = this.props.route.params.flag;
     // var base64org = orgimg.base64
     // console.log("printing")
     var inputuri = "data:image/png;base64," + base64org;
