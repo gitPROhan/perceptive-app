@@ -81,6 +81,7 @@ export default class Processing extends React.Component {
   convertAndSend = (dataWithImages) => {
     var data = dataWithImages.summary;
     var base64OfDetectedImages = dataWithImages.base64Out;
+    var inputImage = dataWithImages.base64Org;
     // //DATA schema FROM IMAGEDETEC ROUTE FROM BACKEND
     // data  = [{
     //   "item"  :"item in order1" , "count" : "detected Couunt of order1"
@@ -115,6 +116,7 @@ export default class Processing extends React.Component {
       currentSummary: summarySchemaData,
       code: this.code,
       prevSummary: this.summary,
+      inputimg: inputImage
     });
     this.props.prevProps.navigation.dispatch(pushAction);
   };
