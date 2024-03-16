@@ -32,7 +32,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="OrderInfo" component={OrderInfo} />
         <Stack.Screen name="Summary" component={NewSummary} options={{ headerShown: false, }} />
-        <Stack.Screen name="ImageViewer" component={Detected_Images} options={{ headerShown: true, }} />
+        <Stack.Screen name="Detected Frames" component={Detected_Images} options={{ headerShown: true, }} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Detections" component={Detections} options={{ headerShown: false, }} />
         <Stack.Screen name="New_Order" component={Inputs} />

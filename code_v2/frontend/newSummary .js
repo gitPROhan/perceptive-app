@@ -213,7 +213,7 @@ export default class NewSummary extends Component {
   // function for displaying the images.
   sendPhotos = (photos) => {
 
-    this.props.navigation.navigate("ImageViewer", { photos, });
+    this.props.navigation.navigate("Detected Frames", { photos, });
   };
 
   // the editable option for displaying the plus minus icons accordingly
@@ -471,4 +471,3 @@ const styles = StyleSheet.create({
     bottom: 50,
   },
 });
-

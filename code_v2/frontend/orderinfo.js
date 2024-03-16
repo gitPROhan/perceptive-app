@@ -91,7 +91,7 @@ export default class OrderInfo extends Component {
   sendPhotos = (photos) => {
 
 
-    this.props.navigation.navigate("ImageViewer", { photos, });
+    this.props.navigation.navigate("Detected Frames", { photos, });
   };
 
 
