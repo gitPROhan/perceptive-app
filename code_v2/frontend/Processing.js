@@ -110,7 +110,7 @@ export default class Processing extends React.Component {
       console.error("base64OfDetectedImages is not an array:", base64OfDetectedImages);
       [base64OfDetectedImages].map((base64) => {
         this.summary.images.push(base64);
-    });
+      });
     }
     //this.props.prevProps.navigation.navigate("Summary", {currentSummary: summarySchemaData, code: this.code, prevSummary: this.summary,});
     const pushAction = StackActions.push("Summary", {
@@ -141,19 +141,17 @@ export default class Processing extends React.Component {
     const isConnected = await NetworkUtils.isNetworkAvailable();
     try {
 
-      let res = await axios.post(uri, data , {
-        cancelToken : this.props.cancelToken.token   
+      let res = await axios.post(uri, data, {
+        cancelToken: this.props.cancelToken.token
       });
       //console.log("DATA FROM SERVER");
       this.convertAndSend(res.data);
     } catch (err) {
       console.log(err);
       //console.log("SERVER");
-      if(err["message"] == undefined)
-      {
+      if (err["message"] == undefined) {
         console.log("cancelled");
-      }else
-      {
+      } else {
         this.showAlert();
       }
     }

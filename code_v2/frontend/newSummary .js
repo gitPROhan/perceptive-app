@@ -251,6 +251,22 @@ export default class NewSummary extends Component {
     }
 
   }
+
+  state = {
+    isPlaying: false // Initial state for whether video is playing
+  };
+
+  togglePlay = async () => {
+    if (this.videoRef) {
+      if (this.state.isPlaying) {
+        await this.videoRef.pauseAsync();
+      } else {
+        await this.videoRef.playAsync();
+      }
+      this.setState({ isPlaying: !this.state.isPlaying });
+    }
+  };
+
   render() {
 
     var data = [];
@@ -300,15 +316,20 @@ export default class NewSummary extends Component {
                 style={{ width: 234, height: 234, borderRadius: 20 }}
               />
             ) : (
-              // <Icon name="images" type="ioniicons" color="black" size={30} />
-              <Video
-                key={-1}
-                source={{ uri: this.state.imagein }}
-                style={{ width: 234, height: 234, borderRadius: 20 }}
-                resizeMode="contain"
-                shouldPlay
-                isLooping
-              />
+              <View>
+                <Video
+                  ref={ref => { this.videoRef = ref; }}
+                  key={-1}
+                  source={{ uri: this.state.imagein }}
+                  style={{ width: 234, height: 234, borderRadius: 20 }}
+                  resizeMode="cover"
+                  isPlaying
+                  isLooping
+                />
+                <TouchableOpacity onPress={this.togglePlay} style={styles.playButton}>
+                  <Text>{this.state.isPlaying ? 'Pause' : 'Play'}</Text>
+                </TouchableOpacity>
+              </View>
             )}
           </TouchableHighlight>
         </View>
@@ -413,7 +434,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "left",
-    marginLeft:30,
+    marginLeft: 30,
     fontWeight: "none",
     fontSize: 17,
   },
@@ -424,7 +445,7 @@ const styles = StyleSheet.create({
   },
   dataWrapper: {
     marginTop: -1,
-    maxHeight: 3*77,
+    maxHeight: 3 * 77,
   },
   row: {
     height: windowHeight / 13.7,
@@ -455,8 +476,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 20,
     alignItems: "center",
-    borderRadius:50,
-    marginBottom:-120
+    borderRadius: 50,
+    marginBottom: -120
   },
   middleicon: {
     flexGrow: 1,
@@ -511,7 +532,15 @@ const styles = StyleSheet.create({
     left: 40,
     bottom: 50,
   },
-  imagestyle:{
-    borderTopLeftRadius:50,
-  }
+  imagestyle: {
+    borderTopLeftRadius: 50,
+  },
+  playButton: {
+    position: 'absolute',
+    bottom: 20,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    padding: 10,
+    borderRadius: 10,
+  },
 });
