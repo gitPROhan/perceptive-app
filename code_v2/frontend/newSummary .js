@@ -313,7 +313,7 @@ export default class NewSummary extends Component {
               <Image
                 key={-1}
                 source={{ uri: this.state.imagein }}
-                style={{ width: 234, height: 234, borderRadius: 20 }}
+                style={{ width: 270, height: 270, borderRadius: 20, marginTop: -40, borderWidth: 8, borderColor: "black" }}
               />
             ) : (
               <View>
@@ -383,6 +383,13 @@ export default class NewSummary extends Component {
             source={require("./assets/back.png")}
           />
         </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={this.backAction}>
+          <Image
+            style={styles.tickimage}
+            contentFit="cover"
+            source={require("./assets/tick.png")}
+          />
+        </TouchableWithoutFeedback>
         {/* <View style={styles.bottomicon}>
           <TouchableHighlight
             onPress={() => { this.sendPhotos(this.state.object.images); }}
@@ -444,7 +451,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   dataWrapper: {
-    marginTop: -1,
+    marginBottom: -70,
     maxHeight: 3 * 77,
   },
   row: {
@@ -529,8 +536,14 @@ const styles = StyleSheet.create({
   backimage: {
     width: 50,
     height: 50,
-    left: 40,
-    bottom: 50,
+    left: 35,
+    bottom: -10,
+  },
+  tickimage: {
+    width: 60,
+    height: 60,
+    left: 175,
+    bottom: 40,
   },
   imagestyle: {
     borderTopLeftRadius: 50,

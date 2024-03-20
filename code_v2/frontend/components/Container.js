@@ -53,11 +53,13 @@ const styles = StyleSheet.create({
   outlinedelevatedlargeiconOChild: {
     width: 40,
     height: 40,
+    alignItems: "center",
+    marginLeft: -2,
   },
   outlinedelevatedlargeiconO: {
     position: "absolute",
     top: 0,
-    left: 4151,
+    left: 4154,
     borderRadius: 15,
     backgroundColor: Color.colorLavender,
     shadowColor: "rgba(101, 92, 128, 0.4)",
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 2,
     shadowOpacity: 1,
-    width: 73,
+    width: 72,
     height: 74,
     flexDirection: "row",
     alignItems: "center",

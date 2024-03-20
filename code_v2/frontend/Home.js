@@ -636,10 +636,12 @@ const styles = StyleSheet.create({
   frame7: {
     top: 691,
     height: 240,
+    // alignItems: "center",
   },
   frame6: {
     height: 931,
     top: 0,
+    // alignItems: "center",
   },
   frame4: {
     left: 3529,
