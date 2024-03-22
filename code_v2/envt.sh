@@ -3,8 +3,8 @@
 cd ./backend
 
 
-python3 -m venv ./backend/environmentname
-source ./backend/environmentname/bin/activate
+python3 -m venv environmentname
+source environmentname/bin/activate
 
 pip install Flask
 pip install pymongo
@@ -18,8 +18,9 @@ pip install yacs
 pip3 install -U scikit-learn scipy matplotlib
 pip install scikit-image
 pip install Flask-Cors
+
 # if running on ubuntu use this command:
-# sudo apt-get install python3-opencv
+sudo apt-get install python3-opencv
 
 # if running on mac, use this command:
-brew install opencv
+# brew install opencv
