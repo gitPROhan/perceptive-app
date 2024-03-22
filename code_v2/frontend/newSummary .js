@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    // backgroundColor: "#1A49F2",
+    backgroundColor: "#1A49F2",
   },
   minusbuttonText: {
     paddingTop: 17,
@@ -489,7 +489,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    // backgroundColor: "#95A3D4",
+    backgroundColor: "#95A3D4",
   },
   transparentLogo1Icon: {
     width: 40,
