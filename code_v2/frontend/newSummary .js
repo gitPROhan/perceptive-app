@@ -153,6 +153,18 @@ export default class NewSummary extends Component {
     ]);
     return true;
   };
+  //back handler for handling the save option before saving the summary.
+  tickAction = () => {
+    Alert.alert("Hold on!", "Are you sure you want to save?", [
+      {
+        text: "Cancel",
+        onPress: () => null,
+        style: "cancel"
+      },
+      { text: "Confirm", onPress: () => { this.props.navigation.reset({ index: 0, routes: [{ name: "Home" }] }); } }
+    ]);
+    return true;
+  };
   // Adding the listener
   async componentDidMount() {
     await this.getEditable()
@@ -301,9 +313,6 @@ export default class NewSummary extends Component {
           contentFit="cover"
           source={require("./assets/logo1.png")}
         />
-        {/* <View>
-          <Image key={-1} source={{ uri: this.state.imagein }} style={{ width: 200, height: 200 }} />
-        </View> */}
         <View style={styles.bottomicon}>
           <TouchableHighlight
             onPress={() => { this.sendPhotos(this.state.object.images); }}
@@ -313,7 +322,7 @@ export default class NewSummary extends Component {
               <Image
                 key={-1}
                 source={{ uri: this.state.imagein }}
-                style={{ width: 270, height: 270, borderRadius: 20, marginTop: -40, borderWidth: 8, borderColor: "black" }}
+                style={{ width: 300, height: 300, borderRadius: 20, marginTop: 50, marginBottom: 80, borderWidth: 8, borderColor: "black", marginLeft: -17 }}
               />
             ) : (
               <View>
@@ -361,19 +370,6 @@ export default class NewSummary extends Component {
                 />
               ))}
             </Table>
-
-            {/* <View style={styles.middleicon}>
-
-              <TouchableHighlight onPress={() => { this.sendData(this.state.object, 0); }} underlayColor="white">
-
-                <Icon name="add-circle-sharp" type="ioniicons" color="black" size={40} />
-
-              </TouchableHighlight>
-
-              <Text style={{ marginLeft: -15 }}>ADD IMAGE</Text>
-
-            </View> */}
-
           </ScrollView>
         </View>
         <TouchableWithoutFeedback onPress={this.backAction}>
@@ -383,43 +379,13 @@ export default class NewSummary extends Component {
             source={require("./assets/back.png")}
           />
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={this.backAction}>
+        <TouchableWithoutFeedback onPress={this.tickAction}>
           <Image
             style={styles.tickimage}
             contentFit="cover"
             source={require("./assets/tick.png")}
           />
         </TouchableWithoutFeedback>
-        {/* <View style={styles.bottomicon}>
-          <TouchableHighlight
-            onPress={() => { this.sendPhotos(this.state.object.images); }}
-            underlayColor="white"
-          >
-            <Icon name="images" type="ioniicons" color="black" size={30} />
-          </TouchableHighlight>
-        </View> */}
-
-        {/* <View style={styles.bottomicon}>
-          <TouchableHighlight
-            onPress={() => this.callDelete(this.state.object.title)}
-            underlayColor="white"
-          >
-
-            <MaterialIcons name="cancel" size={35} color="black" />
-          </TouchableHighlight>
-        </View>
-
-        <View style={styles.bottomicon}>
-          <TouchableHighlight
-            onPress={() => {
-              this.callSave(this.state.object);
-            }}
-            underlayColor="white"
-          >
-
-            <Ionicons name="md-checkmark-circle" size={35} color="black" />
-          </TouchableHighlight>
-        </View> */}
       </View>
     );
   }
@@ -451,12 +417,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   dataWrapper: {
-    marginBottom: -70,
     maxHeight: 3 * 77,
   },
   row: {
     height: windowHeight / 13.7,
-    marginTop: 0,
   },
   lastRow: {
     borderBottomLeftRadius: 20, // Adjust the value to change the roundness
@@ -517,7 +481,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    backgroundColor: "#1A49F2",
+    // backgroundColor: "#1A49F2",
   },
   minusbuttonText: {
     paddingTop: 17,
@@ -525,11 +489,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    backgroundColor: "#95A3D4",
+    // backgroundColor: "#95A3D4",
   },
   transparentLogo1Icon: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     top: 40,
     left: 20,
   },
@@ -537,13 +501,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     left: 35,
-    bottom: -10,
+    bottom: 40,
   },
   tickimage: {
     width: 60,
     height: 60,
-    left: 175,
-    bottom: 40,
+    left: 165,
+    bottom: 100,
   },
   imagestyle: {
     borderTopLeftRadius: 50,

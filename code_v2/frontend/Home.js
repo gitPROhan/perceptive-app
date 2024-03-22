@@ -453,6 +453,7 @@ import ContainerColumn from "./components/ContainerColumn";
 import { FontFamily, Color } from "./GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
+import { color } from "react-native-elements/dist/helpers";
 
 const HomePage = () => {
   const navigation = useNavigation(); // Access navigation object
@@ -514,13 +515,16 @@ const HomePage = () => {
             <Text style={[styles.welcome, styles.welcomePosition]}>
               Welcome
             </Text>
+            <Text style={[styles.productDetection, styles.productDetectionPosition]}>
+              Product Detection
+            </Text>
           </View>
-          <View style={[styles.frame6, styles.framePosition]}>
+          {/* <View style={[styles.frame6, styles.framePosition]}>
             <View style={[styles.frame7, styles.framePosition]}>
               <ContainerColumn />
               <ContainerColumn />
             </View>
-          </View>
+          </View> */}
         </View>
       </View>
     </View>
@@ -672,6 +676,15 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 812,
     overflow: "hidden",
+  },
+  productDetection: {
+    fontSize: 30, // Example font size
+    color: Color.colorBlack, // Example color
+    fontFamily: FontFamily.nunitoBold,
+  },
+  productDetectionPosition: {
+    marginTop: 660,
+    marginLeft: 290,
   },
 });
 
