@@ -322,7 +322,7 @@ export default class NewSummary extends Component {
               <Image
                 key={-1}
                 source={{ uri: this.state.imagein }}
-                style={{ width: 300, height: 300, borderRadius: 20, marginTop: 50, marginBottom: 80, borderWidth: 8, borderColor: "black", marginLeft: -17 }}
+                style={{ width: 350, height: 300, borderRadius: 60, marginTop: 50, marginBottom: 80, borderWidth: 4, borderColor: "#999999", marginLeft: -17 }}
               />
             ) : (
               <View>
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    backgroundColor: "#1A49F2",
+    // backgroundColor: "#1A49F2",
   },
   minusbuttonText: {
     paddingTop: 17,
@@ -489,7 +489,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontSize: 20,
     paddingLeft: 10,
-    backgroundColor: "#95A3D4",
+    // backgroundColor: "#95A3D4",
   },
   transparentLogo1Icon: {
     width: 40,
