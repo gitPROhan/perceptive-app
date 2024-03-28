@@ -448,7 +448,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     alignItems: "center",
     borderRadius: 50,
-    marginBottom: -120
+    marginBottom: -120,
   },
   middleicon: {
     flexGrow: 1,

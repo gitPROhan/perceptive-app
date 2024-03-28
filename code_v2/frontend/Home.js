@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     top: 0,
   },
   frame1: {
-    top: 88,
+    top: 77,
     left: 0,
     width: 4243,
     overflow: "hidden",
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   frame: {
     top: 625,
     height: 124,
-    left: -4003,
+    left: -3998,
     position: "absolute",
   },
   frameIcon: {
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   productDetection: {
-    fontSize: 30, 
+    fontSize: 30,
     color: "#3D85C6",
     fontFamily: FontFamily.nunitoBold,
   },
