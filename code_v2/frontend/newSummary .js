@@ -325,12 +325,12 @@ export default class NewSummary extends Component {
                 style={{ width: 350, height: 300, borderRadius: 60, marginTop: 50, marginBottom: 80, borderWidth: 4, borderColor: "#999999", marginLeft: -17 }}
               />
             ) : (
-              <View>
+              <View style = {{ marginBottom: 80 }}>
                 <Video
                   ref={ref => { this.videoRef = ref; }}
                   key={-1}
                   source={{ uri: this.state.imagein }}
-                  style={{ width: 234, height: 234, borderRadius: 20 }}
+                  style={{ width: 350, height: 300, borderRadius: 60, marginTop: 50, borderWidth: 4, borderColor: "#999999", marginLeft: -17 }}
                   resizeMode="cover"
                   isPlaying
                   isLooping
