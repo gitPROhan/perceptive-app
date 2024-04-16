@@ -143,27 +143,50 @@ def get_prediction(name):
 
     #target(class) image array
     y = ['raw_inputs/t_surf3_1.jpg',
-        #"raw_inputs/fogg_g_w.jpg",
         "raw_inputs/fogg_p_w.jpg",
-        #"raw_inputs/t b mug1.jpg",
-        #"raw_inputs/t caramel.jpg"
-        #"raw_inputs/t chings1.jpg",
-        #"raw_inputs/t p mug1.jpg"
-        ] 
+        "raw_inputs/detection_orng2.jpg",
+        "raw_inputs/t caramel.jpg",
+        "raw_inputs/t almond.jpg",
+        "raw_inputs/t choco.jpg",
+        "raw_inputs/choclate-waffy.png",
+        "raw_inputs/Tango1.jpg",
+        "raw_inputs/Coffee Image 1.png",
+        "raw_inputs/Face Scrub Image 1.png",
+        "raw_inputs/Oats Image 1.png",
+        "raw_inputs/orange-waffy.png",
+        "raw_inputs/pink-waffy.png",
+        ]
 
     #manaul input array
-    manual= [#"raw_inputs/m g fogg.jpg",
-        "raw_inputs/g surf m.jpg",
-            "raw_inputs/m p fogg.jpg"
-            #"raw_inputs/m b mug1.jpg",
-            #"raw_inputs/m caramel.jpg"
-            #"raw_inputs/m chings1.jpg",
-            #"raw_inputs/m p mug1.jpg"
-            ]
+    manual= ["raw_inputs/g surf m.jpg",
+            "raw_inputs/m p fogg.jpg",
+            "raw_inputs/m caramel.jpg",
+            "raw_inputs/m almond.jpg",
+            "raw_inputs/m choco.jpg",
+            "raw_inputs/m choclate-waffy.png",
+            "raw_inputs/m Tango1.jpg",
+            "raw_inputs/m Coffee Image 1.png",
+            "raw_inputs/m Face Scrub Image 1.png",
+            "raw_inputs/m Oats Image 1.png",
+            "raw_inputs/m orange-waffy.png",
+            "raw_inputs/m pink-waffy.png",
+                ]
 
     #labels=['Fogg-green','Fogg-purple','DM-Caramel','Pink-mug']
     labels=["Surf-Green",
-        'Fogg-Purple']
+        'Fogg-Purple',
+        "Shreds-Orng",
+        "DairyMlk-Carml",
+        "DairyMlk-Almnd",
+        "DairyMlk-Choco",
+        "waffy-choco",
+        "Tang",
+        "Coffee",
+        "Scrub",
+        "Oat",
+        "waffy-orng",
+        "waffy-pink"
+        ]
 
 
     #reading inputs
