@@ -43,6 +43,9 @@ import { header, host, port, keyForEditable } from "./Constants";
 import colours from "./colours";
 // import Constants from 'expo-constants';
 import { useNavigation } from '@react-navigation/native';
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
 
 
 //screen dimensions for making the css universal; i.e, independent of phone's dimension
@@ -325,7 +328,7 @@ export default class NewSummary extends Component {
                 style={{ width: 350, height: 300, borderRadius: 60, marginTop: 50, marginBottom: 80, borderWidth: 4, borderColor: "#999999", marginLeft: -17 }}
               />
             ) : (
-              <View style = {{ marginBottom: 80 }}>
+              <View style={{ marginBottom: 80 }}>
                 <Video
                   ref={ref => { this.videoRef = ref; }}
                   key={-1}

@@ -4,6 +4,9 @@ import Container from "./components/Container";
 import { FontFamily, Color } from "./GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
 
 const HomePage = () => {
   const navigation = useNavigation(); // Access navigation object
