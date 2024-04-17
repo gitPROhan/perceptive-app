@@ -101,3 +101,5 @@ npm install --legacy-peer-deps
 npx expo install --fix --  --legacy-peer-deps
 
 npm install @expo/ngrok@^4.1.0 --save-dev --legacy-peer-deps
+
+npx expo login
