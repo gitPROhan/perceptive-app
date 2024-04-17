@@ -97,11 +97,7 @@ npm install @expo/config@8.1.1 --legacy-peer-deps
 npm install @expo/metro-config@0.10.0 --legacy-peer-deps
 
 npm install --legacy-peer-deps
-npm install --save expo-av --legacy-peer-deps
-
 
 npx expo install --fix --  --legacy-peer-deps
 
-# follow the backend running procedure in doc
-npx expo start
-#scan qr code
+npm install @expo/ngrok@^4.1.0 --save-dev --legacy-peer-deps
