@@ -160,6 +160,7 @@ def get_prediction(name):
     #manaul input array
     manual= ["raw_inputs/g surf m.jpg",
             "raw_inputs/m p fogg.jpg",
+            "raw_inputs/orng.jpg",
             "raw_inputs/m caramel.jpg",
             "raw_inputs/m almond.jpg",
             "raw_inputs/m choco.jpg",
